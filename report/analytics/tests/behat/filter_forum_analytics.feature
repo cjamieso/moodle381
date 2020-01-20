@@ -49,7 +49,7 @@ Feature: Filter forum engagement as an instructor
   Scenario: Basic filtering on forum engagement chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum engagement" graph
     And I press apply filter on "forumchart"
     Then the following grouped bars exist:
@@ -93,7 +93,7 @@ Feature: Filter forum engagement as an instructor
   Scenario: Export activity chart data to excel
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum engagement" graph
     And I press apply filter on "forumchart"
     Then the export on "forumchart" is between "3200" and "3300" bytes

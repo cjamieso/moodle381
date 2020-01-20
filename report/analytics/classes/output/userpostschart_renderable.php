@@ -144,6 +144,7 @@ class userpostschart_renderable extends chart_renderable {
      * @return array  the data for all posts by a user in a particular forum
      */
     protected function get_forum_posts_data($studentid, $forumid, $posts) {
+        global $USER;
 
         $forum = $this->postlist[$studentid]->forums[$forumid];
         $return = array('name' => $forum->name, 'link' => '../../mod/forum/view.php?id=' . $forum->cmid);
@@ -151,10 +152,13 @@ class userpostschart_renderable extends chart_renderable {
         foreach ($posts as $post) {
             $discussion = $this->get_discussion($post->discussion);
             $course = $this->get_course();
-            $cm = $forum->cm;
-            // Post API function does not return replies by default.
-            $post->replies = forum_count_replies($post);
-            forum_print_post($post, $discussion, $forum, $cm, $course, false, true);
+            $entityfactory = \mod_forum\local\container::get_entity_factory();
+            $postentity = $entityfactory->get_post_from_stdclass($post);
+            $discussionentity = $entityfactory->get_discussion_from_stdclass($discussion);
+            $forumentity = $entityfactory->get_forum_from_stdclass($forum, $forum->cm->context, $forum->cm, $course);
+            $rendererfactory = \mod_forum\local\container::get_renderer_factory();
+            $postsrenderer = $rendererfactory->get_single_discussion_posts_renderer(null, false);
+            echo $postsrenderer->render($USER, [$forumentity], [$discussionentity], [$postentity]);
         }
         $return['postshtml'] = ob_get_contents();
         ob_end_clean();

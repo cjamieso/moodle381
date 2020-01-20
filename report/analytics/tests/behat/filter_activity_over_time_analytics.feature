@@ -41,7 +41,7 @@ Feature: Filter activity over time data as an instructor
   Scenario: Basic filtering on time based engagement chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Engagement over time" graph
     When I toggle "All pages" on the "activity" filter
     And I press apply filter on "activitytimelinechart"
@@ -101,7 +101,7 @@ Feature: Filter activity over time data as an instructor
   Scenario: Advanced filtering on time based engagement chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Engagement over time" graph
     And I click on "Students" "button"
     And I click on ".advancedtoggle" "css_element"
@@ -148,7 +148,7 @@ Feature: Filter activity over time data as an instructor
   Scenario: Use graph interactivity on time based engagement chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Engagement over time" graph
     And I press apply filter on "activitytimelinechart"
     And I click on "All pages" legend entry
@@ -161,9 +161,9 @@ Feature: Filter activity over time data as an instructor
   Scenario: Advanced export features from time based engagement chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Engagement over time" graph
     And I press apply filter on "activitytimelinechart"
-    Then the export on "activitytimelinechart" is between "3700" and "3800" bytes
+    Then the export on "activitytimelinechart" is between "3750" and "3850" bytes
     When I click on ".pngexport i" "css_element"
     Then the png export should be at least "45000" bytes

@@ -42,7 +42,7 @@ Feature: View a grade scatter chart as an instructor
     And I log out
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Gradebook setup" node in "Course administration"
+    And I navigate to "Setup > Gradebook setup" in the course gradebook
     And I press "Add grade item"
     And I set the following fields to these values:
       | Item name | Manual item 1 |
@@ -59,7 +59,7 @@ Feature: View a grade scatter chart as an instructor
   Scenario: Basic filtering on grade chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Grades vs. Actions" graph
     And I press apply filter on "gradechart"
     Then graph title should be "Displaying results for all students"
@@ -89,7 +89,7 @@ Feature: View a grade scatter chart as an instructor
   Scenario: Advanced export features from grade chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Grades vs. Actions" graph
     And I press apply filter on "gradechart"
     Then the export on "gradechart" is between "3200" and "3300" bytes

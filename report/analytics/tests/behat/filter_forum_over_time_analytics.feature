@@ -49,7 +49,7 @@ Feature: Filter forums over time data as an instructor
   Scenario: Basic filtering on time based forum engagement chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum engagement over time" graph
     And I click on "Students" "button"
     And I toggle "Test Student1" on the "student" filter
@@ -89,7 +89,7 @@ Feature: Filter forums over time data as an instructor
   Scenario: Advanced filtering on time based forum engagement chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum engagement over time" graph
     And I click on ".advancedtoggle" "css_element"
     And I click on "Students" "button"
@@ -117,7 +117,7 @@ Feature: Filter forums over time data as an instructor
   Scenario: Export time based forum engagement chart data to excel
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum engagement over time" graph
     And I press apply filter on "forumtimelinechart"
     Then the export on "forumtimelinechart" is between "3350" and "3450" bytes

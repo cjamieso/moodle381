@@ -50,7 +50,7 @@ Feature: Display a user's forum posts as an instructor
   Scenario: Basic filtering on user posts chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum posts by user(s)" graph
     And I press apply filter on "userpostschart"
     Then I should see "Displaying results for all students"
@@ -86,7 +86,7 @@ Feature: Display a user's forum posts as an instructor
   Scenario: Filter by word count from user posts chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum posts by user(s)" graph
     And I click on "Students" "button"
     And I toggle "Test Student1" on the "student" filter
@@ -100,7 +100,7 @@ Feature: Display a user's forum posts as an instructor
   Scenario: Advanced export features from user posts chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Forum posts by user(s)" graph
     And I click on "Students" "button"
     And I toggle "Test Student1" on the "student" filter

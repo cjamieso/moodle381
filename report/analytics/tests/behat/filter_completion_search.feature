@@ -32,7 +32,7 @@ Feature: Filter students by criteria as an instructor
       | student2 | G1 |
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Gradebook setup" node in "Course administration"
+    And I navigate to "Setup > Gradebook setup" in the course gradebook
     # Scale, text grade items are tested in more detail in phpunit tests.
     And I press "Add grade item"
     And I set the following fields to these values:
@@ -56,7 +56,7 @@ Feature: Filter students by criteria as an instructor
   Scenario: Find users by criteria
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Student list by criteria" graph
     And I click on "Actions" "button"
     And I set the following fields to these values:
@@ -117,7 +117,7 @@ Feature: Filter students by criteria as an instructor
   Scenario: Advanced export features from completion search chart
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Student list by criteria" graph
     And I click on "Actions" "button"
     And I set the following fields to these values:

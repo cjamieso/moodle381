@@ -32,7 +32,7 @@ Feature: Generate a scheduled criteria report as an instructor
       | student2 | G1 |
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Gradebook setup" node in "Course administration"
+    And I navigate to "Setup > Gradebook setup" in the course gradebook
     # Scale, text grade items are tested in more detail in phpunit tests.
     And I press "Add grade item"
     And I set the following fields to these values:
@@ -56,7 +56,7 @@ Feature: Generate a scheduled criteria report as an instructor
   Scenario: Create a scheduled report
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I click on ".scheduledreport" "css_element"
     And I click on ".scheduled-add i" "css_element"
     And I click on "Actions" "button" in the ".filterheader" "css_element"

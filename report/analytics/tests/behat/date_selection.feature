@@ -29,7 +29,7 @@ Feature: Use date selection options on analytics graphs
   Scenario: Re-use dates entered by previous analytics graphs as an instructor
     When I log in as "teacher1"
     And I am on "Course Wi13" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     And I add "2016-06-23" to the "from" date
     And I add "2016-06-25" to the "to" date
@@ -58,7 +58,7 @@ Feature: Use date selection options on analytics graphs
   Scenario: Use date selector to choose relative dates as an instructor
     When I log in as "teacher1"
     And I am on "Course Wi13" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     And I click on ".dateselector i" "css_element"
     And I click on "//div[contains(@class, 'dateselector')]//span[text() = 'Last week']" "xpath_element"
@@ -72,27 +72,27 @@ Feature: Use date selection options on analytics graphs
   Scenario: Auto term detection
     When I log in as "teacher1"
     And I am on "Course Wi13" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     Then "from" date on "activitychart" should be "2013-01-01"
     And "to" date on "activitychart" should be "2013-04-30"
     And I am on "Course Sp14" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     Then "from" date on "activitychart" should be "2014-05-01"
     And "to" date on "activitychart" should be "2014-06-30"
     And I am on "Course Su15" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     Then "from" date on "activitychart" should be "2015-07-01"
     And "to" date on "activitychart" should be "2015-08-31"
     And I am on "Course Fa16" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     Then "from" date on "activitychart" should be "2016-09-01"
     And "to" date on "activitychart" should be "2016-12-31"
     And I am on "Course Su17 Wi13 Fa20" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     Then "from" date on "activitychart" should be "2013-01-01"
     And "to" date on "activitychart" should be "2020-12-31"

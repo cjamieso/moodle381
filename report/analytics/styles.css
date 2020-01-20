@@ -233,6 +233,7 @@ body.path-report-analytics .filterheader input.uniquecheck {
 
 body.path-report-analytics .dateselector .ms-drop {
     width: 110px;
+    height: 74px;
     margin-top: 2px;
 }
 

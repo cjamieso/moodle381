@@ -21,7 +21,7 @@ Feature: View analytics as an instructor
   Scenario: View analytics report charts as an instructor
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
-    And I navigate to "Analytics (Beta)" node in "Course administration > Reports"
+    And I navigate to "Reports > Analytics (Beta)" in current page administration
     And I add a "Content engagement" graph
     And I press apply filter on "activitychart"
     Then I should see "Activities" in the ".activitychart .filterheader" "css_element"

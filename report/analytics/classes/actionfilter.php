@@ -50,7 +50,7 @@ class actionfilter extends filter {
             '\mod_forum\event\post_created' => get_string('eventpostcreated', 'mod_forum'),
             '\mod_forum\event\discussion_created' => get_string('eventdiscussioncreated', 'mod_forum'));
         $this->events = array('\mod_assign\event\assessable_submitted' => get_string('pluginname', 'mod_assign') . ' ' .
-            get_string('submissions', 'mod_assign'),
+            get_string('submission', 'mod_assign'),
             '\mod_assign\event\submission_status_viewed' => get_string('submissionstatus', 'mod_assign') . ' ' .
             get_string('viewed', 'mod_quiz'),
             '\mod_quiz\event\attempt_started' => get_string('eventquizattemptstarted', 'mod_quiz'),
