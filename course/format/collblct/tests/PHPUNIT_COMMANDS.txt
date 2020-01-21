@@ -4,26 +4,30 @@ composer install --dev
 
 php admin/tool/phpunit/cli/init.php
 
-vendor/bin/phpunit format_topcoll_courseformatlib_testcase course/format/topcoll/tests/courseformatlib_test.php
+Linux/Unix/MacOS
 or
-vendor\bin\phpunit format_topcoll_courseformatlib_testcase course/format/topcoll/tests/courseformatlib_test.php
+Windows\
 
-vendor/bin/phpunit format_topcoll_courseformatrenderer_testcase course/format/topcoll/tests/courseformatrenderer_test.php
+vendor/bin/phpunit format_collblct_courseformatlib_testcase course/format/collblct/tests/courseformatlib_test.php
 or
-vendor\bin\phpunit format_topcoll_courseformatrenderer_testcase course/format/topcoll/tests/courseformatrenderer_test.php
+vendor\bin\phpunit format_collblct_courseformatlib_testcase course/format/collblct/tests/courseformatlib_test.php
 
-vendor/bin/phpunit format_topcoll_courseformattoolbox_testcase course/format/topcoll/tests/courseformattoolbox_test.php
+vendor/bin/phpunit format_collblct_courseformatrenderer_testcase course/format/collblct/tests/courseformatrenderer_test.php
 or
-vendor\bin\phpunit format_topcoll_courseformattoolbox_testcase course/format/topcoll/tests/courseformattoolbox_test.php
+vendor\bin\phpunit format_collblct_courseformatrenderer_testcase course/format/collblct/tests/courseformatrenderer_test.php
 
-vendor/bin/phpunit format_topcoll_privacy_testcase course/format/topcoll/tests/privacy_provider_test.php
+vendor/bin/phpunit format_collblct_courseformattoolbox_testcase course/format/collblct/tests/courseformattoolbox_test.php
 or
-vendor\bin\phpunit format_topcoll_privacy_testcase course/format/topcoll/tests/privacy_provider_test.php
+vendor\bin\phpunit format_collblct_courseformattoolbox_testcase course/format/collblct/tests/courseformattoolbox_test.php
 
-vendor/bin/phpunit format_topcoll_togglelib_testcase course/format/topcoll/tests/togglelib_test.php
+vendor/bin/phpunit format_collblct_privacy_testcase course/format/collblct/tests/privacy_provider_test.php
 or
-vendor\bin\phpunit format_topcoll_togglelib_testcase course/format/topcoll/tests/togglelib_test.php
+vendor\bin\phpunit format_collblct_privacy_testcase course/format/collblct/tests/privacy_provider_test.php
 
-vendor/bin/phpunit --group format_topcoll
+vendor/bin/phpunit format_collblct_togglelib_testcase course/format/collblct/tests/togglelib_test.php
 or
-vendor\bin\phpunit --group format_topcoll
+vendor\bin\phpunit format_collblct_togglelib_testcase course/format/collblct/tests/togglelib_test.php
+
+vendor/bin/phpunit --group format_collblct
+or
+vendor\bin\phpunit --group format_collblct

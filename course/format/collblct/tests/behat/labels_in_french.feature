@@ -28,7 +28,7 @@ Feature: View collapsed labels in other languages
   @javascript
   Scenario: View collapsed labels in French
     Given I log in as "admin"
-    And I navigate to "Language packs" node in "Site administration > Language"
+    And I navigate to "Language > Language packs" in site administration
     When I set the field "Available language packs" to "fr"
     And I press "Install selected language pack(s)"
     Then I should see "Language pack 'fr' was successfully installed"

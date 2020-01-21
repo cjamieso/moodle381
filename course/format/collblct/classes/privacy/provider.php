@@ -17,9 +17,7 @@
 /**
  * Privacy Subsystem implementation for format_collblct.
  *
- * @package    course/format
- * @subpackage collblct
- * @category   event
+ * @package    format_collblct
  * @version    See the value of '$plugin->version' in version.php.
  * @copyright  &copy; 2018-onwards G J Barnard based upon work done by Andrew Nicols <andrew@nicols.co.uk>.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}

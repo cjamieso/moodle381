@@ -13,6 +13,8 @@ Copy over plus.gif and minus.gif from pix folder
 Copy over other files -> {collapsed_label_hooks.php, collapsed_menu.class.php, course_color_record.class.php,
             course_section_record.class.php, edit_course_settings.php, label_info.class.php, locallib.php,
             mod_depths.class.php, settings_edit_form.php, unittest.xml, new tests in tests folder}
+Copy over tests -> {collapsedmenu_test.php, collblctunittest.php, coursecolorrecord_test.php, coursesectionrecord_test.php
+            labelinfo_test.php, all files in behat folder}
 
 Merge changes into styles.css
 

@@ -22,8 +22,7 @@
  * Toggles are persistent on a per browser session per course basis but can be made to persist longer by a small
  * code change. Full installation instructions, code adaptions and credits are included in the 'Readme.md' file.
  *
- * @package    course/format
- * @subpackage collblct
+ * @package    format_collblct
  * @version    See the value of '$plugin->version' in version.php.
  * @copyright  &copy; 2012-onwards G J Barnard in respect to modifications of standard topics format.
  * @author     G J Barnard - {@link http://moodle.org/user/profile.php?id=442195}
@@ -176,7 +175,15 @@ class format_collblct extends format_base {
         return $o;
     }
 
-    public function get_section_dates($section, $course, $tcsettings) {
+    public function get_section_dates($section, $course = null, $tcsettings = null) {
+        if (empty($tcsettings) && empty($course)) {
+            return $this->format_collblct_get_section_dates($section, $this->get_course());
+        }
+
+        if (empty($tcsettings)) {
+            $tcsettings = $this->get_settings();
+        }
+
         $dateformat = get_string('strftimedateshort');
         $o = '';
         if ($tcsettings['layoutstructure'] == 5) {
@@ -194,6 +201,32 @@ class format_collblct extends format_base {
             $endweekday = userdate($dates->end, $dateformat);
             $o = $weekday . ' - ' . $endweekday;
         }
+        return $o;
+    }
+
+    /**
+     * What structure collection type are we using?
+     *
+     * @return string Structure collection type.
+     */
+    public function get_structure_collection_type() {
+        $tcsettings = $this->get_settings();
+        $o = '';
+
+        switch($tcsettings['layoutstructure']) {
+            case 1:
+            case 4:
+                $o = get_string('layoutstructuretopics', 'format_collblct');
+            break;
+            case 2:
+            case 3:
+                $o = get_string('layoutstructureweeks', 'format_collblct');
+            break;
+            case 5:
+                $o = get_string('layoutstructuredays', 'format_collblct');
+            break;
+        }
+
         return $o;
     }
 
@@ -409,6 +442,14 @@ class format_collblct extends format_base {
                     'default' => get_config('format_collblct', 'defaultlayoutcolumnorientation'),
                     'type' => PARAM_INT,
                 ),
+                'toggleallenabled' => array(
+                    'default' => get_config('format_collblct', 'defaulttoggleallenabled'),
+                    'type' => PARAM_INT,
+                ),
+                'viewsinglesectionenabled' => array(
+                    'default' => get_config('format_collblct', 'defaultviewsinglesectionenabled'),
+                    'type' => PARAM_INT,
+                ),
                 'togglealignment' => array(
                     'default' => get_config('format_collblct', 'defaulttogglealignment'),
                     'type' => PARAM_INT,
@@ -591,6 +632,26 @@ class format_collblct extends format_base {
                               2 => new lang_string('columnhorizontal', 'format_collblct')) // Default.
                     )
                 );
+                $courseformatoptionsedit['toggleallenabled'] = array(
+                    'label' => new lang_string('settoggleallenabled', 'format_collblct'),
+                    'help' => 'settoggleallenabled',
+                    'help_component' => 'format_collblct',
+                    'element_type' => 'select',
+                    'element_attributes' => array(
+                        array(1 => new lang_string('no'),
+                              2 => new lang_string('yes'))
+                    )
+                );
+                $courseformatoptionsedit['viewsinglesectionenabled'] = array(
+                    'label' => new lang_string('setviewsinglesectionenabled', 'format_collblct'),
+                    'help' => 'setviewsinglesectionenabled',
+                    'help_component' => 'format_collblct',
+                    'element_type' => 'select',
+                    'element_attributes' => array(
+                        array(1 => new lang_string('no'),
+                              2 => new lang_string('yes'))
+                    )
+                );
                 $courseformatoptionsedit['toggleiconposition'] = array(
                     'label' => new lang_string('settoggleiconposition', 'format_collblct'),
                     'help' => 'settoggleiconposition',
@@ -630,6 +691,10 @@ class format_collblct extends format_base {
                     'label' => get_config('format_collblct', 'defaultlayoutcolumns'), 'element_type' => 'hidden');
                 $courseformatoptionsedit['layoutcolumnorientation'] = array(
                     'label' => get_config('format_collblct', 'defaultlayoutcolumnorientation'), 'element_type' => 'hidden');
+                $courseformatoptionsedit['toggleallenabled'] = array(
+                    'label' => get_config('format_collblct', 'defaulttoggleallenabled'), 'element_type' => 'hidden');
+                $courseformatoptionsedit['viewsinglesectionenabled'] = array(
+                    'label' => get_config('format_collblct', 'defaultviewsinglesectionenabled'), 'element_type' => 'hidden');
                 $courseformatoptionsedit['toggleiconposition'] = array(
                     'label' => get_config('format_collblct', 'defaulttoggleiconposition'), 'element_type' => 'hidden');
                 $courseformatoptionsedit['onesection'] = array(
@@ -781,7 +846,7 @@ class format_collblct extends format_base {
                     'label' => get_config('format_collblct', 'defaulttgfgopacity'), 'element_type' => 'hidden');
                 $courseformatoptionsedit['toggleforegroundhovercolour'] = array(
                     'label' => $defaulttgfghvrcolour, 'element_type' => 'hidden');
-                $courseformatoptionsedit['toggleforegroundhoveopacity'] = array(
+                $courseformatoptionsedit['toggleforegroundhoveropacity'] = array(
                     'label' => get_config('format_collblct', 'defaulttgfghvropacity'), 'element_type' => 'hidden');
                 $courseformatoptionsedit['togglebackgroundcolour'] = array(
                     'label' => $defaulttgbgcolour, 'element_type' => 'hidden');
@@ -789,7 +854,7 @@ class format_collblct extends format_base {
                     'label' => get_config('format_collblct', 'defaulttgbgopacity'), 'element_type' => 'hidden');
                 $courseformatoptionsedit['togglebackgroundhovercolour'] = array(
                     'label' => $defaulttgbghvrcolour, 'element_type' => 'hidden');
-                $courseformatoptionsedit['togglebackgroundhoveopacity'] = array(
+                $courseformatoptionsedit['togglebackgroundhoveropacity'] = array(
                     'label' => get_config('format_collblct', 'defaulttgbghvropacity'), 'element_type' => 'hidden');
             }
             $readme = new moodle_url('/course/format/collblct/Readme.md');
@@ -1270,6 +1335,8 @@ class format_collblct extends format_base {
             $updatedata['layoutstructure'] = get_config('format_collblct', 'defaultlayoutstructure');
             $updatedata['layoutcolumns'] = get_config('format_collblct', 'defaultlayoutcolumns');
             $updatedata['layoutcolumnorientation'] = get_config('format_collblct', 'defaultlayoutcolumnorientation');
+            $updatedata['toggleallenabled'] = get_config('format_collblct', 'defaulttoggleallenabled');
+            $updatedata['viewsinglesectionenabled'] = get_config('format_collblct', 'defaultviewsinglesectionenabled');
             $updatedata['toggleiconposition'] = get_config('format_collblct', 'defaulttoggleiconposition');
             $updatedata['onesection'] = get_config('format_collblct', 'defaultonesection');
             $updatedata['showsectionsummary'] = get_config('format_collblct', 'defaultshowsectionsummary');
@@ -1344,6 +1411,8 @@ class format_collblct extends format_base {
             // Defaults taken from 'settings.php'.
             $data['displayinstructions'] = get_config('format_collblct', 'defaultdisplayinstructions');
             $data['layoutcolumnorientation'] = get_config('format_collblct', 'defaultlayoutcolumnorientation');
+            $data['toggleallenabled'] = get_config('format_collblct', 'defaulttoggleallenabled');
+            $data['viewsinglesectionenabled'] = get_config('format_collblct', 'defaultviewsinglesectionenabled');
             $data['showsectionsummary'] = get_config('format_collblct', 'defaultshowsectionsummary');
             $data['togglealignment'] = get_config('format_collblct', 'defaulttogglealignment');
             $data['toggleallhover'] = get_config('format_collblct', 'defaulttoggleallhover');
