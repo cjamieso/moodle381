@@ -69,11 +69,11 @@ Feature: Download students' results
     And I press "Submit your answers"
     And I log out
 
-  @javascript
+  @javascript @_file_upload
   Scenario: Download students' results
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
     And I click on "Graph/Export feedback results" "link"
-    Then the "pre" export is between "6350" and "6400" bytes
-    And the "post" export is between "6300" and "6350" bytes
+    Then the "pre" export is between "6400" and "6500" bytes
+    And the "post" export is between "6350" and "6450" bytes
 

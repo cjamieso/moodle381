@@ -52,7 +52,7 @@ Feature: Set accreditation IDs
     And I press "Save changes"
     And I log out
 
-  @javascript
+  @javascript @_file_upload
   Scenario: Upload and enter accreditation IDs
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
