@@ -24,7 +24,7 @@ Feature: View Section Icons
   Scenario: View exams and assignments as a student
     When I log out
     And I log in as "student1"
-    And I follow "Course 1"
+    And I am on "Course 1" course homepage
     Then I should not see "Topic 1" in the "Course Sections" "block"
     Then I should not see "Topic 5" in the "Course Sections" "block"
     When I log out
@@ -35,6 +35,6 @@ Feature: View Section Icons
     And I press "Save changes"
     And I log out
     And I log in as "student1"
-    And I follow "Course 1"
+    And I am on "Course 1" course homepage
     Then I should see "Topic 1" in the "Course Sections" "block"
     Then I should see "Topic 5" in the "Course Sections" "block"

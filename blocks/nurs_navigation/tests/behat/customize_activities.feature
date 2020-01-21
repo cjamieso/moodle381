@@ -37,7 +37,7 @@ Feature: Customize Activities
     And I press "Save changes"
     And I log out
     And I log in as "student1"
-    And I follow "Course 1"
+    And I am on "Course 1" course homepage
     And I click on "Exams" "link" in the "Course Sections" "block"
     Then I should see "Quiz 1" in the "#page-content" "css_element"
     And I should not see "Quiz 2" in the "#page-content" "css_element"
