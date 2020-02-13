@@ -23,7 +23,6 @@
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    background-color: inherit;
 }
 
 .ms-choice.disabled {
@@ -78,10 +77,10 @@
 
 .ms-drop.bottom {
     top: 100%;
-    background: inherit;
     -webkit-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
     -moz-box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
     box-shadow: 0 4px 5px rgba(0, 0, 0, .15);
+    background-color: #f4f4f4;
 }
 
 .ms-drop.top {

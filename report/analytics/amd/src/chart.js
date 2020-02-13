@@ -147,8 +147,6 @@ define(['local_d3js/d3', 'jquery', 'local_d3js/d3.layout.cloud', 'report_analyti
             this.filters.activities = new filters.SelectFilter(this.outerdiv.find('select.activityfilter'), selectoptions);
             this.filters.date = new filters.DateFilter(this.outerdiv.find('div.fdate_time_selector').closest('form'),
                 {date: this.filteroptions.date});
-            // Inject form-control class to have text follow dark theme.
-            this.outerdiv.find('button.ms-choice').addClass('form-control');
         },
 
         /**

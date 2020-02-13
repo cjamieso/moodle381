@@ -612,6 +612,10 @@ body.path-report-analytics #chartcontainer {
     flex-wrap: wrap;
 }
 
+body.path-report-analytics #region-main {
+    border: none;
+}
+
 /*******************************************************************************
 * Tweaks for scheduled report page.
 *******************************************************************************/

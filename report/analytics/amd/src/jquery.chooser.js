@@ -135,7 +135,7 @@ define(['local_d3js/d3', 'report_analytics/graph', 'jquery'], function(d3, analy
             that.$element.show();
             that.$element.children('.chooserdialoguebody').show();
             var dialogue = $('.jschooser .chooserdialogue');
-            var container = $('#chartcontainer').closest('.card');
+            var container = $('#region-main-box');
             var top = container.height() / 2 - dialogue.height() / 2 + scrollY;
             var heightMax = container.height() - dialogue.height();
             if (top > heightMax) {

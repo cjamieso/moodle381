@@ -43,10 +43,10 @@ Context variables required for this template:
     <label>{{label}}</label>
 {{/ label }}
 {{# multiple }}
-    <select class="select custom-select {{{type}}}filter" multiple="multiple" name="{{{type}}}filter">
+    <select class="select {{{type}}}filter" multiple="multiple" name="{{{type}}}filter">
 {{/ multiple }}
 {{^ multiple }}
-    <select class="single select custom-select {{{type}}}filter" name="{{{type}}}filter">
+    <select class="single select {{{type}}}filter" name="{{{type}}}filter">
 {{/ multiple }}
         {{# optgroup }}
             <optgroup label="{{{label}}}">
