@@ -48,6 +48,10 @@ class qtype_calculatedmedical_single_question extends qtype_calculatedmulti_sing
         qtype_calculatedmedical_question_helper::apply_attempt_state($this, $step);
         parent::apply_attempt_state($step);
     }
+
+    public function get_variants_selection_seed() {
+        return $this->stamp;
+    }
 }
 
 /**
@@ -66,6 +70,10 @@ class qtype_calculatedmedical_multi_question extends qtype_calculatedmulti_multi
     public function apply_attempt_state(question_attempt_step $step) {
         qtype_calculatedmedical_question_helper::apply_attempt_state($this, $step);
         parent::apply_attempt_state($step);
+    }
+
+    public function get_variants_selection_seed() {
+        return $this->stamp;
     }
 }
 
